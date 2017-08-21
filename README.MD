@@ -1,1 +1,2 @@
-"# Angular_Git" 
+Angular Practices
+Repository for angular practices
