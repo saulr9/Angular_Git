@@ -1,2 +1,2 @@
-Angular Practices
-Repository for angular practices
+#Angular Practices
+##Repository for angular practices
