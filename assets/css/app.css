@@ -1,0 +1,95 @@
+html,
+body {
+	height: 100%;
+}
+
+.srBgColorMorado {
+	background-color: #a24ca4 !important;
+}
+
+/*header*/
+header .brand-logo {
+	position: relative !important;
+}
+#srHeader {
+	position: relative;
+	min-height: 320px;
+	background: url('../img/bg_flat.jpg') center center no-repeat;
+	background-size: cover;
+	background-attachment: fixed;
+}
+#srHeader:before{
+	position: absolute;
+	content: "";
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+    background: -moz-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* ff3.6+ */
+    background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(162,76,164,1)), color-stop(37%, rgba(162,76,164,0.5)), color-stop(99%, rgba(232,54,102,1)), color-stop(100%, rgba(232,54,102,1))); /* safari4+,chrome */
+    background: -webkit-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* safari5.1+,chrome10+ */
+    background: -o-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* opera 11.10+ */
+    background: -ms-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* ie10+ */
+    background: linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* w3c */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#e83666', endColorstr='#a24ca4',GradientType=1 ); /* ie6-9 */ 
+}
+.srBigTitle {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    color: #fff;
+}
+.srContent{
+	margin-top: 80px; /*momentaneo*/
+}
+/*gems*/
+.card .card-image .card-title {
+	color: #151515 !important;
+	font-weight: bold;
+	padding: 0 0 0 15px !important;
+}
+.card .card-image img {
+	width: auto !important;
+	margin: 0 auto; 
+}
+.srCardPrice {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 12px;
+    font-weight: bold;
+    font-size: 22px;
+}
+.srImgThumbnails {
+    display: block;
+    position: absolute;
+    top: 0;
+}
+
+.srImgMini img {
+    max-width: 40px;
+}
+
+
+
+/**footer**/
+footer {
+	/*position: absolute;
+	width: 100%;
+	bottom: 0;*/
+}
+footer .row {
+	margin-bottom: 0 !important;
+}
+.srCopyrightText {
+	color: #fff;
+}
+
+.srLogoFooter {
+	display: block;
+    padding: 15px;
+	color: #fff;
+
+}
