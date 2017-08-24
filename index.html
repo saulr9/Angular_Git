@@ -62,7 +62,7 @@
 	</div>
 	<div class="row">
 			<div class="srContent">
-			    <div class="col s12 m4" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
+			    <div class="col s12 m6" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     		        <div class="card">
         		        <div class="card-image">
           		            <img src="assets/img/gems/gem-01.gif">
@@ -80,6 +80,18 @@
           		        	<p class="white-text">{{product.description | limitTo: 100}}...</p>
         		        </div>
    					</div>
+            <section class="" ng-controller="TabController as tabs">
+           <ul class="tabs">
+           <li class="tab col s3" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
+           <li class="tab col s3" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs</a></li>
+           <li class="tab col s3" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
+           </ul>
+           <div ng-show="tabs.isSet(1)" class="col s12">{{product.description}}</div>
+           <div ng-show="tabs.isSet(2)" class="col s12">Shine: {{product.shine}}</div>
+           <div ng-show="tabs.isSet(3)" class="col s12">Nothing yet</div>
+           </section>
+
+
         		</div>
 			</div>
    </div>
@@ -93,7 +105,15 @@
             <img ng-src="{{product.images[0]}}" />
           </li>
  -->        
-
+  <div id="modal1" class="modal">
+    <div class="modal-content">
+      <h4>Modal Header</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
+    </div>
+  </div>
 
 		<!-- Footer -->
 <footer id="footer" class="purple darken-4">
