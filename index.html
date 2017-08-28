@@ -72,7 +72,7 @@
     		        <div class="card">
         		        <div class="card-image" ng-controller="GalleryController as gallery">
           		            <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
-          		            <span class="card-title">{{product.name}}</span>
+          		            <span class="card-title activator">{{product.name}}</span>
           		            <span class="srCardPrice">{{product.price | currency }}</span>
           		            <a class="btn-floating halfway-fab waves-effect waves-light red" ng-show="product.canPurchase">
           		            <i class="material-icons">shopping_basket</i></a>
@@ -85,17 +85,21 @@
         		        <div class="card-content purple darken-4">
           		        	<p class="white-text">{{product.description | limitTo: 200}}...</p>
         		        </div>
+                    <div class="card-reveal">
+                      <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
+                        <section class="" ng-controller="TabController as tabs">
+                          <ul class="tabs">
+                          <li class="tab col s4" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
+                          <li class="tab col s4" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs</a></li>
+                          <li class="tab col s4" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
+                          </ul>
+                          <div ng-show="tabs.isSet(1)" class="col s12">{{product.description}}</div>
+                          <div ng-show="tabs.isSet(2)" class="col s12">Shine: {{product.shine}}</div>
+                          <div ng-show="tabs.isSet(3)" class="col s12">Nothing yet</div>
+                        </section>
+                    </div>
    					</div>
-            <section class="" ng-controller="TabController as tabs">
-           <ul class="tabs">
-           <li class="tab col s3" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
-           <li class="tab col s3" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs</a></li>
-           <li class="tab col s3" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
-           </ul>
-           <div ng-show="tabs.isSet(1)" class="col s12">{{product.description}}</div>
-           <div ng-show="tabs.isSet(2)" class="col s12">Shine: {{product.shine}}</div>
-           <div ng-show="tabs.isSet(3)" class="col s12">Nothing yet</div>
-           </section>
+
 
 
         		</div>
