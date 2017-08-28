@@ -24,6 +24,15 @@ $('ul.tabs').tabs();
       return this.tab === checkTab;
     };
   });
+
+  app.controller('GalleryController', function() {
+    this.current= 0;
+    this.setCurrent = function(newValue) {
+      this.current = newValue || 0;
+
+    };
+  });
+
     var gems = [
       {
         id: 1,
