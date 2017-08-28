@@ -22,7 +22,7 @@
 	</head>
 <body ng-app="gemStore" ng-controller="StoreController as store">
 	<header>
-	    <nav class="purple darken-4">
+	    <nav class="srNav">
             <div class="nav-wrapper">
             	<div class="container">
             	    <div class="row">
@@ -50,7 +50,13 @@
             	</div>
             </div>
         </nav>
-        <div id="srHeader"><h1 class="srBigTitle">Gem Store</h1></div>
+        <section class="srVideoSection">
+          <h1 class="srBigTitle">Gem Store</h1>
+        <video autoplay loop id="srVideo" muted poster="assets/img/bg_flat.jpg">
+          <source src="assets/video/videobg.mp4" type="video/mp4"></video>
+          <!--<div id="srHeader"><h1 class="srBigTitle">Gem Store</h1></div>-->
+        </section>
+        
     </header>
 
 
@@ -62,22 +68,22 @@
 	</div>
 	<div class="row">
 			<div class="srContent">
-			    <div class="col s12 m6" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
+			    <div class="col s12 m6 srProductCard" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     		        <div class="card">
-        		        <div class="card-image">
-          		            <img src="assets/img/gems/gem-01.gif">
+        		        <div class="card-image" ng-controller="GalleryController as gallery">
+          		            <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
           		            <span class="card-title">{{product.name}}</span>
           		            <span class="srCardPrice">{{product.price | currency }}</span>
           		            <a class="btn-floating halfway-fab waves-effect waves-light red" ng-show="product.canPurchase">
           		            <i class="material-icons">shopping_basket</i></a>
-          		            <ul class="srImgThumbnails">
+          		            <ul class="srImgThumbnails" ng-show="product.images.length">
           		            	<li class="srImgMini" ng-repeat="image in product.images">
           		            		<img ng-src="{{image}}"/>
           		            	</li>
           		            </ul>
         		        </div>
         		        <div class="card-content purple darken-4">
-          		        	<p class="white-text">{{product.description | limitTo: 100}}...</p>
+          		        	<p class="white-text">{{product.description | limitTo: 200}}...</p>
         		        </div>
    					</div>
             <section class="" ng-controller="TabController as tabs">
