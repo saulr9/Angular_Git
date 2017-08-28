@@ -8,8 +8,16 @@ body {
 }
 
 /*header*/
+.srNav {
+	background: rgba(255,255,255,0.8);
+	position: fixed;
+	z-index: 9999;
+
+}
 header .brand-logo {
 	position: relative !important;
+	color: #4a148c;
+    text-shadow: 1px 1px #ec297b;
 }
 #srHeader {
 	position: relative;
@@ -18,13 +26,14 @@ header .brand-logo {
 	background-size: cover;
 	background-attachment: fixed;
 }
-#srHeader:before{
+.srVideoSection:before{
 	position: absolute;
 	content: "";
 	left: 0;
 	right: 0;
 	top: 0;
 	bottom: 0;
+	z-index: 1;
     background: -moz-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* ff3.6+ */
     background: -webkit-gradient(linear, left bottom, right top, color-stop(0%, rgba(162,76,164,1)), color-stop(37%, rgba(162,76,164,0.5)), color-stop(99%, rgba(232,54,102,1)), color-stop(100%, rgba(232,54,102,1))); /* safari4+,chrome */
     background: -webkit-linear-gradient(45deg, rgba(162,76,164,1) 0%, rgba(162,76,164,0.5) 37%, rgba(232,54,102,1) 99%, rgba(232,54,102,1) 100%); /* safari5.1+,chrome10+ */
@@ -40,11 +49,36 @@ header .brand-logo {
     bottom: 0;
     text-align: center;
     color: #fff;
+    z-index: 2;
+    text-shadow: 3px 3px 4px #000;
 }
 .srContent{
 	margin-top: 80px; /*momentaneo*/
 }
+
+/**Video**/
+.srVideoSection{
+  width: 100%;
+  max-height: 600px;
+  overflow: hidden;
+  position: relative;
+  top: 0;
+  right: 0;
+  z-index: -100;
+  /*margin-top: -70px;
+  display: inline-block;*/
+}
+#srVideo {
+  position: relative;
+  width: auto;
+  min-width: 100%;
+  height: auto;
+}
+
 /*gems*/
+.srProductCard {
+	margin-bottom: 30px;
+}
 .card .card-image .card-title {
 	color: #151515 !important;
 	font-weight: bold;
