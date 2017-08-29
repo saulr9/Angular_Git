@@ -7,6 +7,7 @@ app.controller("miControlador", function($scope) {
 */
 $(document).ready(function() {
 $('ul.tabs').tabs();
+$('.modal').modal();
 });
 (function() {
   var app = angular.module('gemStore', []);

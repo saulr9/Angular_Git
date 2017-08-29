@@ -68,65 +68,80 @@
 	</div>
 	<div class="row">
 			<div class="srContent">
-			    <div class="col s12 m6 srProductCard" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
+			    <div class="col s12 m4 srProductCard" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     		        <div class="card">
         		        <div class="card-image" ng-controller="GalleryController as gallery">
+                      <div class="srViewMore"><a href="#gem-{{product.id}}"><i class="material-icons">add</i></a></div>
           		            <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
-          		            <span class="card-title activator">{{product.name}}</span>
+          		            <span class="card-title">{{product.name}}</span>
           		            <span class="srCardPrice">{{product.price | currency }}</span>
-          		            <a class="btn-floating halfway-fab waves-effect waves-light red" ng-show="product.canPurchase">
+          		            <a class="btn-floating halfway-fab waves-effect waves-light red srAddToCart" ng-show="product.canPurchase">
           		            <i class="material-icons">shopping_basket</i></a>
           		            <ul class="srImgThumbnails" ng-show="product.images.length">
           		            	<li class="srImgMini" ng-repeat="image in product.images">
           		            		<img ng-src="{{image}}"/>
           		            	</li>
           		            </ul>
+                          
         		        </div>
-        		        <div class="card-content purple darken-4">
-          		        	<p class="white-text">{{product.description | limitTo: 200}}...</p>
+        		        <div class="card-content srBgDeg">
+          		        	<p class="white-text">{{product.description | limitTo: 100}}...</p>
         		        </div>
-                    <div class="card-reveal">
-                      <span class="card-title grey-text text-darken-4">{{product.name}}<i class="material-icons right">close</i></span>
-                        <section class="" ng-controller="TabController as tabs">
+                      <div id="gem-{{product.id}}" class="modal">
+                        <div class="modal-content">
+                          <div class="row">
+                            <div class="col s12 col m6 center-align" ng-controller="GalleryController as gallery">
+                          <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
+                          <ul class="srImgThumbnails" ng-show="product.images.length">
+                            <li class="srImgMini" ng-repeat="image in product.images">
+                              <img ng-src="{{image}}"/>
+                            </li>
+                          </ul>
+                            </div>
+                            <div class="col s12 col m6">
+                              <h4 class="center-align">{{product.name}}</h4>
+                              <p>{{product.description}}</p>
+                              <p class="center-align"><a class="waves-effect waves-light btn srBtnAddToCart srBgDeg"><i class="material-icons left">shopping_basket</i>Add to Cart</a></p>
+                            </div>
+                          </div>
+
+
+                          <div class="row"><div class="col s12 col ms12">
+                          <!-- Start tabs-->
+                          <section class="" ng-controller="TabController as tabs">
                           <ul class="tabs">
                           <li class="tab col s4" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
                           <li class="tab col s4" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs</a></li>
                           <li class="tab col s4" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
                           </ul>
-                          <div ng-show="tabs.isSet(1)" class="col s12">{{product.description}}</div>
-                          <div ng-show="tabs.isSet(2)" class="col s12">Shine: {{product.shine}}</div>
-                          <div ng-show="tabs.isSet(3)" class="col s12">Nothing yet</div>
+                          <div ng-show="tabs.isSet(1)" class="col s12 srTabs">{{product.description}}</div>
+                          <div ng-show="tabs.isSet(2)" class="col s12 srTabs">Shine: {{product.shine}}</div>
+                          <div ng-show="tabs.isSet(3)" class="col s12 srTabs">
+                            <blockquote ng-repeat="review in product.reviews">
+                              <b>Stars: {{review.stars}}</b>
+                              {{review.body}}
+                              <cite>by: {{review.author}}</cite>
+                            </blockquote>
+                            <a class="btn-floating btn-large waves-effect waves-light red right"><i class="material-icons">add</i></a>
+                          </div>
+
                         </section>
-                    </div>
+                        </div></div>
+
+
+                        </div>
+                        <div class="modal-footer">
+                          <a href="#!" class="modal-action modal-close purple darken-4 waves-effect waves-red btn-flat">Continue shopping</a>
+                        </div>
+                      </div>
    					</div>
-
-
-
         		</div>
 			</div>
    </div>
-
-
-
 </div>
 
-<!--
-          <li class="small-image pull-left thumbnail" ng-repeat="image in product.images" >
-            <img ng-src="{{product.images[0]}}" />
-          </li>
- -->        
-  <div id="modal1" class="modal">
-    <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
-    </div>
-    <div class="modal-footer">
-      <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-  </div>
-
 		<!-- Footer -->
-<footer id="footer" class="purple darken-4">
+<footer id="footer" class="grey darken-4">
 	<div class="srCopyright container">
 		<div class="row">
 			<div class="col s12 m6">
