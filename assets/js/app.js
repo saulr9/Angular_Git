@@ -6,18 +6,25 @@ app.controller("miControlador", function($scope) {
 });
 */
 $(document).ready(function() {
-$('ul.tabs').tabs();
-$('.modal').modal();
+  $('select').material_select();
+  $('ul.tabs').tabs();
+  $('.modal').modal();
 });
 (function() {
   var app = angular.module('gemStore', []);
 
   app.controller('StoreController', function() {
     this.products = gems;
+    var showF = false;
+    this.showForm = function(showF) {
+      this.showF= showF;
+
+    };
   });
 
   app.controller('TabController', function() {
     this.tab = 1;
+
     this.setTab = function(selectedTab) {
       this.tab = selectedTab;
     };
@@ -32,6 +39,17 @@ $('.modal').modal();
       this.current = newValue || 0;
 
     };
+  });
+    app.controller('ReviewController', function() {
+    this.review= {};
+    this.stars = [5,4,3,2,1];
+    this.addReview = function(product) {
+      product.reviews.push(this.review);
+      this.review= {};
+      alert(showF);
+    };
+
+
   });
 
     var gems = [
