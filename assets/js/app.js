@@ -1,10 +1,4 @@
-/*
-var app = angular.module("miAplicacion", []);
-app.controller("miControlador", function($scope) {
-    $scope.nombre = "Saul";
-     $scope.apellidos = "Ramos";
-});
-*/
+
 $(document).ready(function() {
   $('select').material_select();
   $('ul.tabs').tabs();
@@ -12,14 +6,9 @@ $(document).ready(function() {
 });
 (function() {
   var app = angular.module('gemStore', []);
-
   app.controller('StoreController', function() {
     this.products = gems;
-    var showF = false;
-    this.showForm = function(showF) {
-      this.showF= showF;
 
-    };
   });
 
   app.controller('TabController', function() {
@@ -40,13 +29,26 @@ $(document).ready(function() {
 
     };
   });
-    app.controller('ReviewController', function() {
+    app.controller('ReviewController', function($scope) {
     this.review= {};
     this.stars = [5,4,3,2,1];
+    this.hideF= false;
+    showF = false;
+    $scope.showdos=false;
+    $scope.showForm = function(showF) {
+      $scope.showdos = showF;
+    };
     this.addReview = function(product) {
+      this.review.createdOn = Date.now();
       product.reviews.push(this.review);
+
+      $scope.showdos= false;
       this.review= {};
-      alert(showF);
+     
+
+
+
+
     };
 
 
