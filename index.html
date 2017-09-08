@@ -36,7 +36,7 @@
     <section class="srVideoSection">
       <h1 class="srBigTitle">Gem Store</h1>
       <video autoplay loop id="srVideo" muted poster="assets/img/bg_flat.jpg">
-        <source src="assets/video/videobg.mp4" type="video/mp4">
+        <!--<source src="assets/video/videobg.mp4" type="video/mp4">-->
       </video>
     </section>    
   </header>
@@ -97,12 +97,15 @@
                       <div ng-show="tabs.isSet(1)" class="col s12 srTabs">{{product.description}}</div>
                       <div ng-show="tabs.isSet(2)" class="col s12 srTabs">Shine: {{product.shine}}</div>
                       <div ng-show="tabs.isSet(3)" class="col s12 srTabs">
-                        <blockquote id="srReviews" ng-repeat="review in product.reviews" ng-hide="store.showF">
-                          <b>Stars: {{review.stars}}</b>
-                          {{review.body}}
-                        <cite>by: {{review.author}}</cite>
+                        <div ng-controller="ReviewController as reviewCtrl">
+                          {{prueba}}
+                          <blockquote id="srReviews" ng-repeat="review in product.reviews" ng-hide="showdos">
+                            <b>Stars: {{review.stars}}</b>
+                            {{review.body}}
+                            <cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
                         </blockquote>
-                        <form name="reviewForm" ng-show="store.showF" ng-controller="ReviewController as reviewCtrl" ng-submit="reviewCtrl.addReview(product)">
+                        <form id="reviewForm" name="reviewForm"  ng-show="showdos"  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+                          <!--ng-hide="reviewForm.$submitted"-->
                           <!--  Live Preview -->
                           <blockquote>
                             <strong>{{reviewCtrl.review.stars}} Stars</strong>
@@ -112,24 +115,30 @@
                           <!--  Review Form -->
                           <h5 class="center-align">Submit a Review</h5>
                           <div class="input-field col s12">
-                            <select ng-model="reviewCtrl.review.stars" class="browser-default"  title="Stars">
+                            <select ng-model="reviewCtrl.review.stars" class="browser-default"  title="Stars" required>
                               <option value="">Rate the Product</option>
                               <option value="{{star}}" ng-repeat="star in reviewCtrl.stars">{{star}}</option>
                             </select>
                           </div>
                           <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" ng-model="reviewCtrl.review.body"></textarea>
+                            <textarea id="textarea1" class="materialize-textarea" ng-model="reviewCtrl.review.body" required></textarea>
                             <label for="textarea1">Message</label>
                           </div>
                           <div class="input-field col s12">
-                            <input ng-model="reviewCtrl.review.author" id="email" type="email" title="Email" class="validate">
+                            <input ng-model="reviewCtrl.review.author" id="email" name="email" type="email" title="Email" class="validate" required>
                             <label for="email">Email</label>
+                            <span ng-show="!reviewForm.$pristine && reviewForm.email.$error.required">Email is required.</span>
                           </div>
                           <div class="input-field col s12">
-                            <input ng-click="store.showForm(false)" type="submit" class="btn btn-primary pull-right srBgDeg" value="Submit Review" />
-                          </div>
+                            <!--<div>reviewForm is {{reviewForm.$valid}}</div>-->
+                            <input  type="submit" class="btn btn-primary pull-right srBgDeg" value="Submit Review"/>
+                          </div><!-- ng-click="store.showForm(false)" -->
+                          <a class="srCloseReviews waves-effect waves-light" ng-hide=""  ng-click="showForm(false)"><i class="material-icons">clear </i></a>
                         </form>
-                      <a class="btn-floating btn-large waves-effect waves-light red right" ng-hide="store.showF" ng-click="store.showForm(true)"><i class="material-icons">add </i></a>
+                        
+                        <a class="btn-floating btn-large waves-effect waves-light red right" ng-hide="showdos"  ng-click="showForm(true)"><i class="material-icons">add </i></a>
+                        </div>
+
                       </div>
                     </section>
                   </div>
