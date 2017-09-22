@@ -192,6 +192,14 @@ header .brand-logo {
 .srImgMini img {
     max-width: 40px;
 }
+/*tabs*/
+.tabs .tab a:hover, .tabs .tab a.active {
+    color: #b16bb3;
+    cursor: pointer;
+}
+.tabs .indicator {
+    background-color: #b16bb3 !important;
+}
 
 /*Form review*/
 #reviewForm {

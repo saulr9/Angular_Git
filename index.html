@@ -10,13 +10,14 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
 		
-		<link rel="stylesheet" href="assets/css/materialize.css" />
+		<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">-->
+		<link rel="stylesheet" href="assets/css/materialize.css">
 		<link rel="stylesheet" href="assets/css/font-awesome.min.css" />
 		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <link rel="stylesheet" href="assets/css/ngDialog.min.css" />
-    <link rel="stylesheet" href="assets/css/ngDialog-theme-default.min.css" />
+    	<link rel="stylesheet" href="assets/css/ngDialog.min.css" />
+    	<link rel="stylesheet" href="assets/css/ngDialog-theme-default.min.css" />
 		<link rel="stylesheet" href="assets/css/app.css" />
-    <script type="text/javascript" src="assets/js/angular.min.js"></script>
+    	<script type="text/javascript" src="assets/js/angular.min.js"></script>
 
 
 	</head>
@@ -53,7 +54,7 @@
 			  <div class="col s12 m4 srProductCard" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     		  <div class="card">
 
-            <product-card-top></product-card-top>
+            <product-gallery></product-gallery>
 
 		        <div class="card-content srBgDeg">
 		        	<p class="white-text">{{product.description | limitTo: 100}}...</p>
@@ -88,7 +89,8 @@
 
 		<!-- Scripts -->
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
- <script src="assets/js/materialize.js"></script>
+ <script type="text/javascript" src="assets/js/jquery.easing.js"></script>
+ <script type="text/javascript" src="assets/js/materialize.js"></script>
  <script type="text/javascript" src="assets/js/ngDialog.min.js"></script>
  <script type="text/javascript" src="assets/js/app.js"></script>
 <!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->

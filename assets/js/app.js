@@ -1,26 +1,25 @@
 
 $(document).ready(function() {
-  $('select').material_select();
-  $('ul.tabs').tabs();
-  $('.modal').modal();
+  
+
+  $('.modal').modal({
+
+    ready: function () {
+      $('select').material_select();
+      $('ul.tabs').tabs();
+    }
+  });
+
 });
+
 (function() {
+
   var app = angular.module('gemStore', []);
   app.controller('StoreController', function() {
     this.products = gems;
 
   });
 
-  app.controller('TabController', function() {
-    this.tab = 1;
-
-    this.setTab = function(selectedTab) {
-      this.tab = selectedTab;
-    };
-    this.isSet = function(checkTab) {
-      return this.tab === checkTab;
-    };
-  });
 
   app.controller('GalleryController', function() {
     this.current= 0;
@@ -28,6 +27,15 @@ $(document).ready(function() {
       this.current = newValue || 0;
 
     };
+  });
+  app.controller('TabController', function() {
+    this.tab = 1;
+    this.setTab = function(selectedTab) {
+       this.tab = selectedTab;
+    };
+    this.isSet = function(checkTab) {
+       return this.tab === checkTab;
+     };
   });
     app.controller('ReviewController', function($scope) {
     this.review= {};
@@ -42,6 +50,8 @@ $(document).ready(function() {
       this.review.createdOn = Date.now();
       product.reviews.push(this.review);
       $scope.showdos= false;
+      $scope.reviewForm.$setPristine();
+      $scope.reviewForm.$setUntouched();
       this.review= {};
     };
   });
@@ -52,16 +62,27 @@ $(document).ready(function() {
         templateUrl: "product-reviews.html"
       };
     });
-    app.directive("productCardTop", function() {
+    app.directive("productGallery", function() {
       return {
         restrict: "E",
-        templateUrl: "product-card-top.html"
+        templateUrl: "product-gallery.html",
+        controller: 'GalleryController',
+        controllerAs: 'gallery'
       };
     });
+
     app.directive("productModal", function() {
       return {
         restrict: "E",
         templateUrl: "product-modal.html"
+      };
+    });
+    app.directive("productTabs", function() {
+      return {
+        restrict: "E",
+        templateUrl: "product-tabs.html",
+        controller: 'TabController',
+        controllerAs: 'tabs'
       };
     });
     var gems = [

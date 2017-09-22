@@ -1,0 +1,16 @@
+<section>
+  <ul class="tabs">
+    <li class="tab " ng-click="tabs.setTab(1)"><a ng-class="{active:tabs.isSet(1)}" >Description</a></li>
+    <li class="tab "ng-click="tabs.setTab(2)" ><a ng-class="{active:tabs.isSet(2)}" >Specs </a></li>
+    <li class="tab "ng-click="tabs.setTab(3)" ><a ng-class="{active:tabs.isSet(3)}" >Reviews</a></li>
+  </ul>
+  <div ng-show="tabs.isSet(1)" class="col s12 srTabs">
+    {{product.description}}
+  </div>
+  <div ng-show="tabs.isSet(2)" class="col s12 srTabs">
+    Shine: {{product.shine}}
+  </div>
+  <div ng-show="tabs.isSet(3)" class="col s12 srTabs">
+      <product-reviews></product-reviews>
+  </div>
+</section>
