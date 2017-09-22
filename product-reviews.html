@@ -1,0 +1,43 @@
+<div ng-controller="ReviewController as reviewCtrl">
+  {{prueba}}
+  <blockquote id="srReviews" ng-repeat="review in product.reviews" ng-hide="showdos">
+    <b>Stars: {{review.stars}}</b>
+    {{review.body}}
+    <cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
+  </blockquote>
+  <form id="reviewForm" name="reviewForm"  ng-show="showdos"  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
+    <!--ng-hide="reviewForm.$submitted"-->
+    <!--  Live Preview -->
+    <blockquote>
+      <strong>{{reviewCtrl.review.stars}} Stars</strong>
+      {{reviewCtrl.review.body}}
+      <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
+    </blockquote>
+    <!--  Review Form -->
+    <h5 class="center-align">Submit a Review</h5>
+      <div class="input-field col s12">
+        <select ng-model="reviewCtrl.review.stars" class="browser-default"  title="Stars" required>
+          <option value="">Rate the Product</option>
+          <option value="{{star}}" ng-repeat="star in reviewCtrl.stars">{{star}}</option>
+        </select>
+      </div>
+      <div class="input-field col s12">
+        <textarea id="textarea1" class="materialize-textarea" ng-model="reviewCtrl.review.body" required></textarea>
+        <label for="textarea1">Message</label>
+      </div>
+      <div class="input-field col s12">
+        <input ng-model="reviewCtrl.review.author" id="email" name="email" type="email" title="Email" class="validate" required>
+        <label for="email">Email</label>
+        <span ng-show="!reviewForm.$pristine && reviewForm.email.$error.required">Email is required.</span>
+      </div>
+      <div class="input-field col s12">
+        <!--<div>reviewForm is {{reviewForm.$valid}}</div>-->
+        <input  type="submit" class="btn btn-primary pull-right srBgDeg" value="Submit Review"/>
+      </div><!-- ng-click="store.showForm(false)" -->
+      <a class="srCloseReviews waves-effect waves-light" ng-hide=""  ng-click="showForm(false)"><i class="material-icons">clear </i>
+      </a>
+  </form>
+                        
+  <a class="btn-floating btn-large waves-effect waves-light red right" ng-hide="showdos"  ng-click="showForm(true)"><i class="material-icons">add </i>
+  </a>
+</div>

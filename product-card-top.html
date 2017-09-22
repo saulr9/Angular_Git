@@ -1,0 +1,16 @@
+<div class="card-image" ng-controller="GalleryController as gallery">
+  	<div class="srViewMore">
+  		<a href="#gem-{{product.id}}"><i class="material-icons">add</i>
+  		</a>
+  	</div>
+	<img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
+    <span class="card-title">{{product.name}}</span>
+    <span class="srCardPrice">{{product.price | currency }}</span>
+    <a class="btn-floating halfway-fab waves-effect waves-light red srAddToCart" ng-show="product.canPurchase">
+    <i class="material-icons">shopping_basket</i></a>
+    <ul class="srImgThumbnails" ng-show="product.images.length">
+    	<li class="srImgMini" ng-repeat="image in product.images">
+			<img ng-src="{{image}}"/>
+    	</li>
+    </ul>              
+</div>

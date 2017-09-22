@@ -41,19 +41,29 @@ $(document).ready(function() {
     this.addReview = function(product) {
       this.review.createdOn = Date.now();
       product.reviews.push(this.review);
-
       $scope.showdos= false;
       this.review= {};
-     
-
-
-
-
     };
-
-
   });
 
+    app.directive("productReviews", function() {
+      return {
+        restrict: "E",
+        templateUrl: "product-reviews.html"
+      };
+    });
+    app.directive("productCardTop", function() {
+      return {
+        restrict: "E",
+        templateUrl: "product-card-top.html"
+      };
+    });
+    app.directive("productModal", function() {
+      return {
+        restrict: "E",
+        templateUrl: "product-modal.html"
+      };
+    });
     var gems = [
       {
         id: 1,

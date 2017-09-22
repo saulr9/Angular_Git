@@ -52,101 +52,16 @@
 		<div class="srContent">
 			  <div class="col s12 m4 srProductCard" ng-hide="store.product.soldOut" ng-repeat="product in store.products">
     		  <div class="card">
-		        <div class="card-image" ng-controller="GalleryController as gallery">
-              <div class="srViewMore"><a href="#gem-{{product.id}}"><i class="material-icons">add</i></a></div>
-		            <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
-		            <span class="card-title">{{product.name}}</span>
-		            <span class="srCardPrice">{{product.price | currency }}</span>
-		            <a class="btn-floating halfway-fab waves-effect waves-light red srAddToCart" ng-show="product.canPurchase">
-		            <i class="material-icons">shopping_basket</i></a>
-		            <ul class="srImgThumbnails" ng-show="product.images.length">
-		            	<li class="srImgMini" ng-repeat="image in product.images">
-		            		<img ng-src="{{image}}"/>
-		            	</li>
-		            </ul>              
-		        </div>
+
+            <product-card-top></product-card-top>
+
 		        <div class="card-content srBgDeg">
 		        	<p class="white-text">{{product.description | limitTo: 100}}...</p>
 		        </div>
             <div id="gem-{{product.id}}" class="modal">
-              <div class="modal-content">
-                <div class="row">
-                  <div class="col s12 col m6 center-align" ng-controller="GalleryController as gallery">
-                    <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
-                      <ul class="srImgThumbnails" ng-show="product.images.length">
-                        <li class="srImgMini" ng-repeat="image in product.images">
-                          <img ng-src="{{image}}"/>
-                        </li>
-                      </ul>
-                  </div>
-                  <div class="col s12 col m6">
-                    <h4 class="center-align">{{product.name}}</h4>
-                    <p>{{product.description}}</p>
-                    <p class="center-align"><a class="waves-effect waves-light btn srBtnAddToCart srBgDeg"><i class="material-icons left">shopping_basket</i>Add to Cart</a></p>
-                  </div>
-                </div>
-                <div class="row">
-                  <div class="col s12 col ms12">
-                    <!-- Start tabs-->
-                    <section class=""  ng-controller="TabController as tabs">
-                      <ul class="tabs" >
-                        <li class="tab col s4" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
-                        <li class="tab col s4" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs </a></li>
-                        <li class="tab col s4" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
-                      </ul>
-                      <div ng-show="tabs.isSet(1)" class="col s12 srTabs">{{product.description}}</div>
-                      <div ng-show="tabs.isSet(2)" class="col s12 srTabs">Shine: {{product.shine}}</div>
-                      <div ng-show="tabs.isSet(3)" class="col s12 srTabs">
-                        <div ng-controller="ReviewController as reviewCtrl">
-                          {{prueba}}
-                          <blockquote id="srReviews" ng-repeat="review in product.reviews" ng-hide="showdos">
-                            <b>Stars: {{review.stars}}</b>
-                            {{review.body}}
-                            <cite>by: {{review.author}} on {{review.createdOn | date}}</cite>
-                        </blockquote>
-                        <form id="reviewForm" name="reviewForm"  ng-show="showdos"  ng-submit="reviewForm.$valid && reviewCtrl.addReview(product)" novalidate>
-                          <!--ng-hide="reviewForm.$submitted"-->
-                          <!--  Live Preview -->
-                          <blockquote>
-                            <strong>{{reviewCtrl.review.stars}} Stars</strong>
-                            {{reviewCtrl.review.body}}
-                            <cite class="clearfix">—{{reviewCtrl.review.author}}</cite>
-                          </blockquote>
-                          <!--  Review Form -->
-                          <h5 class="center-align">Submit a Review</h5>
-                          <div class="input-field col s12">
-                            <select ng-model="reviewCtrl.review.stars" class="browser-default"  title="Stars" required>
-                              <option value="">Rate the Product</option>
-                              <option value="{{star}}" ng-repeat="star in reviewCtrl.stars">{{star}}</option>
-                            </select>
-                          </div>
-                          <div class="input-field col s12">
-                            <textarea id="textarea1" class="materialize-textarea" ng-model="reviewCtrl.review.body" required></textarea>
-                            <label for="textarea1">Message</label>
-                          </div>
-                          <div class="input-field col s12">
-                            <input ng-model="reviewCtrl.review.author" id="email" name="email" type="email" title="Email" class="validate" required>
-                            <label for="email">Email</label>
-                            <span ng-show="!reviewForm.$pristine && reviewForm.email.$error.required">Email is required.</span>
-                          </div>
-                          <div class="input-field col s12">
-                            <!--<div>reviewForm is {{reviewForm.$valid}}</div>-->
-                            <input  type="submit" class="btn btn-primary pull-right srBgDeg" value="Submit Review"/>
-                          </div><!-- ng-click="store.showForm(false)" -->
-                          <a class="srCloseReviews waves-effect waves-light" ng-hide=""  ng-click="showForm(false)"><i class="material-icons">clear </i></a>
-                        </form>
-                        
-                        <a class="btn-floating btn-large waves-effect waves-light red right" ng-hide="showdos"  ng-click="showForm(true)"><i class="material-icons">add </i></a>
-                        </div>
 
-                      </div>
-                    </section>
-                  </div>
-                </div>
-              </div>
-              <div class="modal-footer">
-                <a href="#!" class="modal-action modal-close purple darken-4 waves-effect waves-red btn-flat">Continue shopping</a>
-              </div>
+            <product-modal></product-modal>
+            
             </div>
    				</div>
         </div>

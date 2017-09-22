@@ -1,0 +1,42 @@
+
+  <div class="modal-content">
+    <div class="row">
+      <div class="col s12 col m6 center-align" ng-controller="GalleryController as gallery">
+        <img ng-src="{{product.images[gallery.current]}}" ng-show="product.images.length">
+          <ul class="srImgThumbnails" ng-show="product.images.length">
+            <li class="srImgMini" ng-repeat="image in product.images">
+              <img ng-src="{{image}}"/>
+            </li>
+          </ul>
+      </div>
+      <div class="col s12 col m6">
+        <h4 class="center-align">{{product.name}}</h4>
+        <p>{{product.description}}</p>
+        <p class="center-align"><a class="waves-effect waves-light btn srBtnAddToCart srBgDeg"><i class="material-icons left">shopping_basket</i>Add to Cart</a></p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col s12 col ms12">
+        <!-- Start tabs-->
+        <section class=""  ng-controller="TabController as tabs">
+          <ul class="tabs" >
+            <li class="tab col s4" ng-class="{active: tabs.isSet(1)}"><a ng-click="tabs.setTab(1)" href>Description</a></li>
+            <li class="tab col s4" ng-class="{active: tabs.isSet(2)}"><a ng-click="tabs.setTab(2)" href>Specs </a></li>
+            <li class="tab col s4" ng-class="{active: tabs.isSet(3)}"><a ng-click="tabs.setTab(3)" href>Reviews</a></li>
+          </ul>
+          <div ng-show="tabs.isSet(1)" class="col s12 srTabs">
+            {{product.description}}
+          </div>
+          <div ng-show="tabs.isSet(2)" class="col s12 srTabs">
+            Shine: {{product.shine}}
+          </div>
+          <div ng-show="tabs.isSet(3)" class="col s12 srTabs">
+            <product-reviews></product-reviews>
+          </div>
+        </section>
+      </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <a href="#!" class="modal-action modal-close purple darken-4 waves-effect waves-red btn-flat">Continue shopping</a>
+  </div>
